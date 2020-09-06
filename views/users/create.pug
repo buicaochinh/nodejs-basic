@@ -1,0 +1,23 @@
+extends ../layouts/common
+
+block content
+    h1 Create Users
+
+    if errors
+      each error in errors
+        .alert.alert-danger= error
+
+    form(action="/users/create" method="POST", enctype="multipart/form-data")
+      .form-group
+        label(for="name") Name
+        input.form-control(type="text", id="name", name="name", value=values ? values.name : "")
+
+      .form-group
+        label(for="phone") Phone
+        input.form-control(type="text", id="phone", name="phone", value=values ? values.phone : "")
+
+      .form-group
+        label(for="avt") Avatar
+        input#avatar.form-control-file(type="file", name="avt")
+
+      button.btn.btn-primary Create
